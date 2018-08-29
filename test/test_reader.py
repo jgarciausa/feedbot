@@ -27,7 +27,7 @@ class FeedDataReaderTest(unittest.TestCase):
         self.last_published_2 = '2018-08-29T02:38:36.247607+00:00'
 
         self.two_feed_full_tree = ElementTree.fromstring("""<?xml version="1.0"?>
-    <config>
+    <status>
         <feeds>
             <feed>
                 <url>{url1}</url>
@@ -40,7 +40,7 @@ class FeedDataReaderTest(unittest.TestCase):
                 <last_published>{last_published_2}</last_published>
             </feed>
         </feeds>
-    </config>
+    </status>
     """.format(url1=self.url1, url2=self.url2, last_request_1=self.last_request_1, last_request_2=self.last_request_2, last_published_1=self.last_published_1, last_published_2=self.last_published_2))
 
     def validate_feed_config_reader(self, feed_config_reader):
