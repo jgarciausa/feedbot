@@ -1,1 +1,4 @@
 venv
+.idea
+feedbot/__pycache__
+test/__pycache__
