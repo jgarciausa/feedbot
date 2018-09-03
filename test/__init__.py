@@ -1,5 +1,19 @@
 import unittest
 from xml.etree import ElementTree
+from feedparser import FeedParserDict
+
+PARSED_FEED_304: FeedParserDict = FeedParserDict()
+PARSED_FEED_304['status'] = 304
+PARSED_FEED_304['feed'] = {}
+PARSED_FEED_304['entries'] = []
+PARSED_FEED_304['debug_message'] = ('The feed has not changed since you last checked, so the server sent no '
+                                    'data.  This is a feature, not a bug!')
+
+def generate_parsed_feed_304():
+    parsed_feed_304 = FeedParserDict()
+
+    return parsed_feed_304
+
 
 class BaseTest(unittest.TestCase):
 
@@ -19,10 +33,12 @@ class BaseTest(unittest.TestCase):
     </config>
     """.format(url1=self.url1, url2=self.url2))
 
-        self.last_request_1 = '2018-08-29T02:43:36.247607+00:00'
-        self.last_published_1 = '2018-08-29T02:40:36.247607+00:00'
-        self.last_request_2 = '2018-08-29T02:43:38.247607+00:00'
-        self.last_published_2 = '2018-08-29T02:38:36.247607+00:00'
+        self.last_request_1 = 'Mon, 03 Sep 2018 21:51:12 GMT'
+        self.last_published_1 = 'Mon, 03 Sep 2018 21:46:12 GMT'
+        self.etag1 = '"d72ddde07efac3b2fc37ff5f42751fc66"'
+        self.last_request_2 = 'Mon, 03 Sep 2018 19:51:12 GMT'
+        self.last_published_2 = 'Mon, 03 Sep 2018 19:46:12 GMT'
+        self.etag2 = '"66cf15724f5ff73cf2b3cafe70edd27d"'
 
         self.two_feed_full_tree = ElementTree.fromstring("""<?xml version="1.0"?>
         <status>
@@ -40,6 +56,5 @@ class BaseTest(unittest.TestCase):
             </feeds>
         </status>
         """.format(url1=self.url1, url2=self.url2, last_request_1=self.last_request_1,
-                   last_request_2=self.last_request_2,
-                   last_published_1=self.last_published_1, last_published_2=self.last_published_2))
-
+                   last_request_2=self.last_request_2, last_published_1=self.last_published_1,
+                   last_published_2=self.last_published_2))
