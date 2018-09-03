@@ -5,6 +5,8 @@ from feedbot.feed import Feed
 
 class FeedTest(BaseTest):
 
+    feed: Feed
+
     def setUp(self):
         super().setUp()
         self.feed = Feed()
@@ -25,14 +27,13 @@ class FeedTest(BaseTest):
 
     def test_merge_from_object_is_empty(self):
 
-        from_feed: Feed = Feed()
         to_feed: Feed = Feed(self.url1, self.last_request_1, self.last_published_1)
 
-        from_feed.merge(to_feed)
+        self.feed.merge(to_feed)
 
-        self.assertEquals(from_feed.url, self.url1)
-        self.assertEqual(from_feed.last_request, self.last_request_1)
-        self.assertEqual(from_feed.last_published, self.last_published_1)
+        self.assertEquals(self.feed.url, self.url1)
+        self.assertEqual(self.feed.last_request, self.last_request_1)
+        self.assertEqual(self.feed.last_published, self.last_published_1)
 
     def test_merge_from_object_some_None_some_not_None(self):
         from_feed: Feed = Feed(None, self.last_request_1, None)
