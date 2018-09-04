@@ -1,7 +1,5 @@
 import feedparser
 from feedparser import FeedParserDict
-import pprint
-import time
 
 PARSED_FEED_304: FeedParserDict = FeedParserDict()
 PARSED_FEED_304['status'] = 304
