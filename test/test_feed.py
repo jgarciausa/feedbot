@@ -1,7 +1,7 @@
 import unittest
 
 from test import BaseTest
-from test import PARSED_FEED_304
+from test.parsedfeed import PARSED_FEED_304
 from feedbot.feed import Feed
 from unittest.mock import patch
 
