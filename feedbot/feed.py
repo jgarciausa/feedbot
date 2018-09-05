@@ -16,6 +16,8 @@ class Feed:
 
         if self.parsed_feed.has_key('modified'):
             self.last_request = self.parsed_feed.modified
+        if self.parsed_feed.has_key('etag'):
+            self.etag = self.parsed_feed.etag
 
     def merge(self, feed):
         if not feed:

@@ -2,6 +2,9 @@ import unittest
 
 from test import BaseTest
 from test.parsedfeed import PARSED_FEED_304
+from test.parsedfeed import PARSED_FEED_NYT_200
+from test.parsedfeed import NYT_VALID_RESPONSE_LAST_MODIFIED
+from test.parsedfeed import NYT_VALID_RESPONSE_ETAG
 from feedbot.feed import Feed
 from unittest.mock import patch
 
@@ -14,6 +17,15 @@ class FeedTest(BaseTest):
         super().setUp()
         self.feed = Feed()
 
+    @patch('feedparser.parse', return_value=PARSED_FEED_NYT_200)
+    def test_parse_feed_no_etag_no_modified_expect_200(self, parse):
+        feed: Feed = Feed(self.url1, None, self.last_published_1, None)
+        feed.parse()
+
+        self.assertIsNotNone(feed.parsed_feed)
+        self.assertEqual(feed.last_request, NYT_VALID_RESPONSE_LAST_MODIFIED)
+        self.assertEqual(feed.etag, NYT_VALID_RESPONSE_ETAG)
+
     @patch('feedparser.parse', return_value=PARSED_FEED_304)
     def test_parse_feed_has_etag_and_modified_expect_304(self, parse):
         feed: Feed = Feed(self.url1, self.last_request_1, self.last_published_1, self.etag1)
@@ -21,6 +33,7 @@ class FeedTest(BaseTest):
 
         self.assertIsNotNone(feed.parsed_feed)
         self.assertEqual(feed.last_request, self.last_request_1)
+        self.assertEqual(feed.etag, self.etag1)
 
     def test_merge_parameter_is_None(self):
         self.assertRaises(RuntimeError, self.feed.merge, None)
