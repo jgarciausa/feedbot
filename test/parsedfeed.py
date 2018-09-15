@@ -13,9 +13,13 @@ NYT_VALID_RESPONSE_ETAG = '"3d7dac85e1976845ada272a608c88458"'
 NYT_RESPONSE_HEADER = {'X-GUploader-UploadID': 'AEnB2UpXtvDrrB6uCmzYY_bKw3BVnRvpdMI4DvFGpnHNmPO8tatucj-u-yuIzUkb3rrlx0CQIqap1ldm-X1jr5kwnPcBiak8xQ', 'Expires': 'Tue, 04 Sep 2018 15:27:51 GMT', 'Cache-Control': 'private, max-age=0', 'Last-Modified': NYT_VALID_RESPONSE_LAST_MODIFIED, 'ETag': NYT_VALID_RESPONSE_ETAG, 'x-amz-meta-x-nyt-agent': 'feedgen::generate_single_section', 'Content-Type': 'application/xml; charset=utf-8', 'x-goog-hash': 'crc32c=Hnnjag==', 'x-goog-storage-class': 'MULTI_REGIONAL', 'Accept-Ranges': 'bytes', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Content-Type', 'Server': 'UploadServer', 'Alt-Svc': 'quic=":443"; ma=2592000; v="44,43,39,35"', 'Via': '1.1 varnish', 'x-nyt-gcs-bucket': 'co-prd', 'Content-Length': '39821', 'Date': 'Tue, 04 Sep 2018 15:27:51 GMT', 'Age': '0', 'Connection': 'close', 'X-Served-By': 'cache-iad2134-IAD, cache-jfk8126-JFK', 'X-Cache': 'MISS, MISS', 'X-Cache-Hits': '0, 0', 'X-Timer': 'S1536074871.290754,VS0,VE33', 'Vary': 'Accept-Encoding'}
 
 NYT_TITLE_1 = "Mueller&#x2019;s Office Will Grill Him About Roger Stone. He Will Respond With Comedy."
+NYT_LINK_1 = "https://www.nytomes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html?partner=rss&amp;emc=rss"
 NYT_TITLE_2 = "Chirlane McCray Endorses Zephyr Teachout in N.Y. Attorney General Race"
+NYT_LINK_2 = "https://www.nytomes.com/2018/09/04/nyregion/chirlane-mccray-zephyr-teachout-endorsement.html?partner=rss&amp;emc=rss"
 NYT_TITLE_3 = "New Yorker Festival Pulls Steve Bannon as Headliner Following High-Profile Dropouts"
+NYT_LINK_3 = "https://www.nytomes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html?partner=rss&amp;emc=rss"
 NYT_TITLE_4 = "Metropolitan Diary: &#x2018;Almost Magnetically, My Hand Was Drawn Into His&#x2019;"
+NYT_LINK_4 = "https://www.nytomes.com/2018/09/03/nyregion/metropolitan-diary.html?partner=rss&amp;emc=rss"
 
 NYT_FEED_XML = """<?xml version="1.0"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytomes.com/namespaces/rss/2.0" version="2.0">
@@ -34,7 +38,7 @@ NYT_FEED_XML = """<?xml version="1.0"?>
     </image>
     <item>
       <title>{nyt_title_1}</title>
-      <link>https://www.nytomes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html?partner=rss&amp;emc=rss</link>
+      <link>{nyt_link_1}</link>
       <guid isPermaLink="true">https://www.nytomes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html</guid>
       <atom:link href="https://www.nytomes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html?partner=rss&amp;emc=rss" rel="standout"/>
       <media:content url="https://static01.nyt.com/images/2018/08/30/nyregion/00randy01/00randy01-moth.jpg" medium="image" height="151" width="151"/>
@@ -59,7 +63,7 @@ NYT_FEED_XML = """<?xml version="1.0"?>
     </item>
     <item>
       <title>{nyt_title_2}</title>
-      <link>https://www.nytomes.com/2018/09/04/nyregion/chirlane-mccray-zephyr-teachout-endorsement.html?partner=rss&amp;emc=rss</link>
+      <link>{nyt_link_2}</link>
       <guid isPermaLink="true">https://www.nytomes.com/2018/09/04/nyregion/chirlane-mccray-zephyr-teachout-endorsement.html</guid>
       <atom:link href="https://www.nytomes.com/2018/09/04/nyregion/chirlane-mccray-zephyr-teachout-endorsement.html?partner=rss&amp;emc=rss" rel="standout"/>
       <media:content url="https://static01.nyt.com/images/2018/09/05/nyregion/05chirlane1/05chirlane1-moth.jpg" medium="image" height="151" width="151"/>
@@ -81,7 +85,7 @@ NYT_FEED_XML = """<?xml version="1.0"?>
     </item>
     <item>
       <title>{nyt_title_3}</title>
-      <link>https://www.nytomes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html?partner=rss&amp;emc=rss</link>
+      <link>{nyt_link_3}</link>
       <guid isPermaLink="true">https://www.nytomes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html</guid>
       <atom:link href="https://www.nytomes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html?partner=rss&amp;emc=rss" rel="standout"/>
       <media:content url="https://static01.nyt.com/images/2018/09/04/us/04newyorker-print/04newyorker-bannoncanceled-moth.jpg" medium="image" height="151" width="151"/>
@@ -97,7 +101,7 @@ NYT_FEED_XML = """<?xml version="1.0"?>
     </item>
     <item>
       <title>{nyt_title_4}</title>
-      <link>https://www.nytomes.com/2018/09/03/nyregion/metropolitan-diary.html?partner=rss&amp;emc=rss</link>
+      <link>{nyt_link_4}</link>
       <guid isPermaLink="true">https://www.nytomes.com/2018/09/03/nyregion/metropolitan-diary.html</guid>
       <atom:link rel="standout" href="https://www.nytomes.com/2018/09/03/nyregion/metropolitan-diary.html?partner=rss&amp;emc=rss"/>
       <media:content url="https://static01.nyt.com/images/2018/09/03/nyregion/03diary-parking/03diary-parking-moth.jpg" medium="image" height="151" width="151"/>
@@ -109,7 +113,8 @@ NYT_FEED_XML = """<?xml version="1.0"?>
       <category domain="http://www.nytomes.com/namespaces/keywords/nyt_geo">New York City</category>
     </item>
   </channel>
-</rss>""".format(nyt_title_1=NYT_TITLE_1, nyt_title_2=NYT_TITLE_2, nyt_title_3=NYT_TITLE_3, nyt_title_4=NYT_TITLE_4)
+</rss>""".format(nyt_title_1=NYT_TITLE_1, nyt_link_1=NYT_LINK_1, nyt_title_2=NYT_TITLE_2, nyt_link_2=NYT_LINK_2,
+                 nyt_title_3=NYT_TITLE_3, nyt_link_3=NYT_LINK_3, nyt_title_4=NYT_TITLE_4, nyt_link_4=NYT_LINK_4)
 
 PARSED_FEED_NYT_200 = feedparser.parse(NYT_FEED_XML, response_headers=NYT_RESPONSE_HEADER)
 PARSED_FEED_NYT_200['status'] = 200
