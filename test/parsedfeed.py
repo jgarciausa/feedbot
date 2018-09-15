@@ -12,7 +12,12 @@ NYT_VALID_RESPONSE_LAST_MODIFIED = 'Tue, 04 Sep 2018 15:23:01 GMT'
 NYT_VALID_RESPONSE_ETAG = '"3d7dac85e1976845ada272a608c88458"'
 NYT_RESPONSE_HEADER = {'X-GUploader-UploadID': 'AEnB2UpXtvDrrB6uCmzYY_bKw3BVnRvpdMI4DvFGpnHNmPO8tatucj-u-yuIzUkb3rrlx0CQIqap1ldm-X1jr5kwnPcBiak8xQ', 'Expires': 'Tue, 04 Sep 2018 15:27:51 GMT', 'Cache-Control': 'private, max-age=0', 'Last-Modified': NYT_VALID_RESPONSE_LAST_MODIFIED, 'ETag': NYT_VALID_RESPONSE_ETAG, 'x-amz-meta-x-nyt-agent': 'feedgen::generate_single_section', 'Content-Type': 'application/xml; charset=utf-8', 'x-goog-hash': 'crc32c=Hnnjag==', 'x-goog-storage-class': 'MULTI_REGIONAL', 'Accept-Ranges': 'bytes', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Content-Type', 'Server': 'UploadServer', 'Alt-Svc': 'quic=":443"; ma=2592000; v="44,43,39,35"', 'Via': '1.1 varnish', 'x-nyt-gcs-bucket': 'co-prd', 'Content-Length': '39821', 'Date': 'Tue, 04 Sep 2018 15:27:51 GMT', 'Age': '0', 'Connection': 'close', 'X-Served-By': 'cache-iad2134-IAD, cache-jfk8126-JFK', 'X-Cache': 'MISS, MISS', 'X-Cache-Hits': '0, 0', 'X-Timer': 'S1536074871.290754,VS0,VE33', 'Vary': 'Accept-Encoding'}
 
-PARSED_FEED_NYT_200 = feedparser.parse("""<?xml version="1.0"?>
+NYT_TITLE_1 = "Mueller&#x2019;s Office Will Grill Him About Roger Stone. He Will Respond With Comedy."
+NYT_TITLE_2 = "Chirlane McCray Endorses Zephyr Teachout in N.Y. Attorney General Race"
+NYT_TITLE_3 = "New Yorker Festival Pulls Steve Bannon as Headliner Following High-Profile Dropouts"
+NYT_TITLE_4 = "Metropolitan Diary: &#x2018;Almost Magnetically, My Hand Was Drawn Into His&#x2019;"
+
+NYT_FEED_XML = """<?xml version="1.0"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytimes.com/namespaces/rss/2.0" version="2.0">
   <channel>
     <title>NYT &gt; New York</title>
@@ -28,7 +33,7 @@ PARSED_FEED_NYT_200 = feedparser.parse("""<?xml version="1.0"?>
       <link>https://www.nytimes.com/section/nyregion?partner=rss&amp;emc=rss</link>
     </image>
     <item>
-      <title>Mueller&#x2019;s Office Will Grill Him About Roger Stone. He Will Respond With Comedy.</title>
+      <title>{nyt_title_1}</title>
       <link>https://www.nytimes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html?partner=rss&amp;emc=rss</link>
       <guid isPermaLink="true">https://www.nytimes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html</guid>
       <atom:link href="https://www.nytimes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html?partner=rss&amp;emc=rss" rel="standout"/>
@@ -53,7 +58,7 @@ PARSED_FEED_NYT_200 = feedparser.parse("""<?xml version="1.0"?>
       <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
     </item>
     <item>
-      <title>Chirlane McCray Endorses Zephyr Teachout in N.Y. Attorney General Race</title>
+      <title>{nyt_title_2}</title>
       <link>https://www.nytimes.com/2018/09/04/nyregion/chirlane-mccray-zephyr-teachout-endorsement.html?partner=rss&amp;emc=rss</link>
       <guid isPermaLink="true">https://www.nytimes.com/2018/09/04/nyregion/chirlane-mccray-zephyr-teachout-endorsement.html</guid>
       <atom:link href="https://www.nytimes.com/2018/09/04/nyregion/chirlane-mccray-zephyr-teachout-endorsement.html?partner=rss&amp;emc=rss" rel="standout"/>
@@ -75,7 +80,7 @@ PARSED_FEED_NYT_200 = feedparser.parse("""<?xml version="1.0"?>
       <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">New York State</category>
     </item>
     <item>
-      <title>New Yorker Festival Pulls Steve Bannon as Headliner Following High-Profile Dropouts</title>
+      <title>{nyt_title_3}</title>
       <link>https://www.nytimes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html?partner=rss&amp;emc=rss</link>
       <guid isPermaLink="true">https://www.nytimes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html</guid>
       <atom:link href="https://www.nytimes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html?partner=rss&amp;emc=rss" rel="standout"/>
@@ -91,7 +96,7 @@ PARSED_FEED_NYT_200 = feedparser.parse("""<?xml version="1.0"?>
       <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Remnick, David</category>
     </item>
     <item>
-      <title>Metropolitan Diary: &#x2018;Almost Magnetically, My Hand Was Drawn Into His&#x2019;</title>
+      <title>{nyt_title_4}</title>
       <link>https://www.nytimes.com/2018/09/03/nyregion/metropolitan-diary.html?partner=rss&amp;emc=rss</link>
       <guid isPermaLink="true">https://www.nytimes.com/2018/09/03/nyregion/metropolitan-diary.html</guid>
       <atom:link rel="standout" href="https://www.nytimes.com/2018/09/03/nyregion/metropolitan-diary.html?partner=rss&amp;emc=rss"/>
@@ -104,5 +109,7 @@ PARSED_FEED_NYT_200 = feedparser.parse("""<?xml version="1.0"?>
       <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">New York City</category>
     </item>
   </channel>
-</rss>""", response_headers=NYT_RESPONSE_HEADER)
+</rss>""".format(nyt_title_1=NYT_TITLE_1, nyt_title_2=NYT_TITLE_2, nyt_title_3=NYT_TITLE_3, nyt_title_4=NYT_TITLE_4)
+
+PARSED_FEED_NYT_200 = feedparser.parse(NYT_FEED_XML, response_headers=NYT_RESPONSE_HEADER)
 PARSED_FEED_NYT_200['status'] = 200
