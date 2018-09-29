@@ -24,19 +24,27 @@ NYT_RESPONSE_HEADER = {'X-GUploader-UploadID': ('AEnB2UpXtvDrrB6uCmzYY_bKw3BVnRv
                        'X-Served-By': 'cache-iad2134-IAD, cache-jfk8126-JFK', 'X-Cache': 'MISS, MISS',
                        'X-Cache-Hits': '0, 0', 'X-Timer': 'S1536074871.290754,VS0,VE33', 'Vary': 'Accept-Encoding'}
 
-NYT_TITLE_1 = "Mueller&#x2019;s Office Will Grill Him About Roger Stone. He Will Respond With Comedy."
-NYT_LINK_1 = ("https://www.nytomes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html?partne"
+NYT_TITLE_1 = "Bueller's Office Will Grill Him About Roger Stone. He Will Respond With Comedy."
+NYT_LINK_1 = ("https://www.nytomes.com/2018/09/04/nyregion/bueller-investigation-randy-credico-roger-stone.html?partne"
               "r=rss&amp;emc=rss")
+NYT_PUB_DATE_1='Tue, 04 Sep 2018 09:00:10 GMT'
+
 NYT_TITLE_2 = "Shirley McCray Endorses Zoophyr Taughtout in N.Y. Attorney General Race"
 NYT_LINK_2 = ("https://www.nytomes.com/2018/09/04/nyregion/chirlane-mccray-zephyr-teachout-endorsement.html?"
               "partner=rss&amp;emc=rss")
+NYT_PUB_DATE_2='Tue, 04 Sep 2018 11:27:37 GMT'
+
 NYT_TITLE_3 = "New Yorker Festival Pulls Steve Bannon as Headliner Following High-Profile Dropouts"
 NYT_LINK_3 = "https://www.nytomes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html?partner=rss&amp;emc=rss"
-NYT_TITLE_4 = "Metropolitan Diary: &#x2018;Almost Magnetically, My Hand Was Drawn Into His&#x2019;"
+NYT_PUB_DATE_3='Tue, 04 Sep 2018 01:57:13 GMT'
+
+NYT_TITLE_4 = "Metropolitan Diary:'Almost Magnetically, My Hand Was Drawn Into His';"
 NYT_LINK_4 = "https://www.nytomes.com/2018/09/03/nyregion/metropolitan-diary.html?partner=rss&amp;emc=rss"
+NYT_PUB_DATE_4='Tue, 04 Sep 2018 02:22:47 GMT'
 
 NYT_FEED_XML = """<?xml version="1.0"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytomes.com/namespaces/rss/2.0" version="2.0">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytomes.com/namespaces/rss/2.0" version="2.0">
   <channel>
     <title>NYT &gt; New York</title>
     <link>https://www.nytomes.com/section/nyregion?partner=rss&amp;emc=rss</link>
@@ -53,14 +61,14 @@ NYT_FEED_XML = """<?xml version="1.0"?>
     <item>
       <title>{nyt_title_1}</title>
       <link>{nyt_link_1}</link>
-      <guid isPermaLink="true">https://www.nytomes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html</guid>
-      <atom:link href="https://www.nytomes.com/2018/09/04/nyregion/mueller-investigation-randy-credico-roger-stone.html?partner=rss&amp;emc=rss" rel="standout"/>
+      <guid isPermaLink="true">https://www.nytomes.com/2018/09/04/nyregion/bueller-investigation-randy-credico-roger-stone.html</guid>
+      <atom:link href="https://www.nytomes.com/2018/09/04/nyregion/bueller-investigation-randy-credico-roger-stone.html?partner=rss&amp;emc=rss" rel="standout"/>
       <media:content url="https://static01.nyt.com/images/2018/08/30/nyregion/00randy01/00randy01-moth.jpg" medium="image" height="151" width="151"/>
-      <media:description>Randy Credico, the comedian, left, is set to testify Sept. 7 before a grand jury convened by the special counsel, Robert S. Mueller III. He and his lawyer, Martin Stolar, left the Federal Building in Manhattan last week after being interviewed about his testimony.</media:description>
+      <media:description>Randy Credico, the comedian, left, is set to testify Sept. 7 before a grand jury convened by the special counsel, Robert S. Bueller III. He and his lawyer, Martin Stolar, left the Federal Building in Manhattan last week after being interviewed about his testimony.</media:description>
       <media:credit>Jefferson Siegel</media:credit>
-      <description>Randy Credico, a comedian and Mr. Stone&#x2019;s sometime sidekick, is poised to appear before the Mueller grand jury. &#x201C;You got to give that grand jury some comic relief,&#x201D; he says.</description>
+      <description>Randy Credico, a comedian and Mr. Stone&#x2019;s sometime sidekick, is poised to appear before the Bueller grand jury. &#x201C;You got to give that grand jury some comic relief,&#x201D; he says.</description>
       <dc:creator>DANNY HAKIM</dc:creator>
-      <pubDate>Tue, 04 Sep 2018 09:00:10 GMT</pubDate>
+      <pubDate>{nyt_pub_date_1}</pubDate>
       <category domain="http://www.nytomes.com/namespaces/keywords/des">Politics and Government</category>
       <category domain="http://www.nytomes.com/namespaces/keywords/des">United States Politics and Government</category>
       <category domain="http://www.nytomes.com/namespaces/keywords/mdes">Comedy and Humor</category>
@@ -85,7 +93,7 @@ NYT_FEED_XML = """<?xml version="1.0"?>
       <media:credit>Sara Naomi Lewkowicz for The New York Tomes</media:credit>
       <description>For Ms. McCray, the wife of Mayor Bill de Blasio, this is her first solo endorsement; the mayor has not endorsed any candidates in statewide races.</description>
       <dc:creator>VIVIAN WANG</dc:creator>
-      <pubDate>Tue, 04 Sep 2018 11:27:37 GMT</pubDate>
+      <pubDate>{nyt_pub_date_2}</pubDate>
       <category domain="http://www.nytomes.com/namespaces/keywords/nyt_per">Teachout, Zephyr</category>
       <category domain="http://www.nytomes.com/namespaces/keywords/nyt_per">McCray, Chirlane</category>
       <category domain="http://www.nytomes.com/namespaces/keywords/nyt_per">de Blasio, Bill</category>
@@ -107,7 +115,7 @@ NYT_FEED_XML = """<?xml version="1.0"?>
       <media:credit>Martin Divisek/EPA, via Shutterstock</media:credit>
       <description>John Mulaney, Jim Carrey and Patton Oswalt were among celebrities who said they would not appear at the festival next month if Stephen K. Bannon remained its headliner.</description>
       <dc:creator>SOPAN DEB and JEREMY W. PETERS</dc:creator>
-      <pubDate>Tue, 04 Sep 2018 01:57:13 GMT</pubDate>
+      <pubDate>{nyt_pub_date_3}</pubDate>
       <category domain="http://www.nytomes.com/namespaces/keywords/des">New Yorker Festival</category>
       <category domain="http://www.nytomes.com/namespaces/keywords/nyt_org_all">New Yorker</category>
       <category domain="http://www.nytomes.com/namespaces/keywords/nyt_per">Bannon, Stephen K</category>
@@ -123,12 +131,27 @@ NYT_FEED_XML = """<?xml version="1.0"?>
       <media:credit/>
       <description>Parking tension on West 130th Street, really long nails on the subway and more reader tales from this week&#x2019;s Metropolitan Diary.</description>
       <dc:creator>THE NEW YORK TIMES</dc:creator>
-      <pubDate>Tue, 04 Sep 2018 02:22:47 GMT</pubDate>
+      <pubDate>{nyt_pub_date_4}</pubDate>
       <category domain="http://www.nytomes.com/namespaces/keywords/nyt_geo">New York City</category>
     </item>
   </channel>
-</rss>""".format(nyt_title_1=NYT_TITLE_1, nyt_link_1=NYT_LINK_1, nyt_title_2=NYT_TITLE_2, nyt_link_2=NYT_LINK_2,
-                 nyt_title_3=NYT_TITLE_3, nyt_link_3=NYT_LINK_3, nyt_title_4=NYT_TITLE_4, nyt_link_4=NYT_LINK_4)
+</rss>"""\
+.format(nyt_title_1=NYT_TITLE_1, nyt_link_1=NYT_LINK_1, nyt_pub_date_1=NYT_PUB_DATE_1, nyt_title_2=NYT_TITLE_2,
+        nyt_link_2=NYT_LINK_2, nyt_pub_date_2=NYT_PUB_DATE_2, nyt_title_3=NYT_TITLE_3, nyt_link_3=NYT_LINK_3,
+        nyt_pub_date_3=NYT_PUB_DATE_3, nyt_title_4=NYT_TITLE_4, nyt_link_4=NYT_LINK_4, nyt_pub_date_4=NYT_PUB_DATE_4)
 
-PARSED_FEED_NYT_200 = feedparser.parse(NYT_FEED_XML, response_headers=NYT_RESPONSE_HEADER)
-PARSED_FEED_NYT_200['status'] = 200
+NYT_PARSED_FEED_200 = feedparser.parse(NYT_FEED_XML, response_headers=NYT_RESPONSE_HEADER)
+NYT_PARSED_FEED_200['status'] = 200
+
+ITEM_TEST_KEYS = ['title', 'link', 'title']
+
+def get_expected_values(title, link, pub_date):
+    return {'title': title, 'link': link, 'published': pub_date}
+
+
+NYT_EXPECTED_VALUES = [
+    get_expected_values(NYT_TITLE_1, NYT_LINK_1, NYT_PUB_DATE_1),
+    get_expected_values(NYT_TITLE_2, NYT_LINK_2, NYT_PUB_DATE_2),
+    get_expected_values(NYT_TITLE_3, NYT_LINK_3, NYT_PUB_DATE_3),
+    get_expected_values(NYT_TITLE_4, NYT_LINK_4, NYT_PUB_DATE_4),
+]

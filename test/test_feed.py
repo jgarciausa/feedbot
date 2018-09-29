@@ -2,11 +2,14 @@ import unittest
 
 from test import BaseTest
 from test.parsedfeed import PARSED_FEED_304
-from test.parsedfeed import PARSED_FEED_NYT_200
+from test.parsedfeed import NYT_PARSED_FEED_200
 from test.parsedfeed import NYT_VALID_RESPONSE_LAST_MODIFIED
 from test.parsedfeed import NYT_VALID_RESPONSE_ETAG
+from test.parsedfeed import NYT_EXPECTED_VALUES
+from test.parsedfeed import ITEM_TEST_KEYS
 from feedbot.feed import Feed
 from unittest.mock import patch
+from xml.sax.saxutils import unescape
 
 
 class FeedTest(BaseTest):
@@ -17,7 +20,7 @@ class FeedTest(BaseTest):
         super().setUp()
         self.feed = Feed()
 
-    @patch('feedparser.parse', return_value=PARSED_FEED_NYT_200)
+    @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_parse_feed_no_etag_no_modified_expect_200(self, parse):
         feed: Feed = Feed(self.url1, None, self.last_published_1, None)
         feed.parse()
@@ -25,6 +28,28 @@ class FeedTest(BaseTest):
         self.assertIsNotNone(feed.parsed_feed)
         self.assertEqual(feed.last_request, NYT_VALID_RESPONSE_LAST_MODIFIED)
         self.assertEqual(feed.etag, NYT_VALID_RESPONSE_ETAG)
+
+    @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
+    def test_parse_nyt_valid_feed_items(self, parse):
+        feed: Feed = Feed(self.url1, None, None, None)
+        feed.parse()
+
+        self.assertIsNotNone(feed.parsed_feed)
+        self.assertTrue(feed.parsed_feed.has_key('items'))
+
+        expected_items_size = len(NYT_EXPECTED_VALUES)
+
+        self.assertEqual(expected_items_size, len(feed.parsed_feed['items']))
+
+        for a in range(expected_items_size):
+            self.assertIsNotNone(feed.parsed_feed['items'][a])
+            item_dict = feed.parsed_feed['items'][a]
+            self.assertIsNotNone(NYT_EXPECTED_VALUES[a])
+            expected_values = NYT_EXPECTED_VALUES[a]
+
+            for key in ITEM_TEST_KEYS:
+                self.assertEqual(unescape(expected_values[key]), item_dict[key])
+
 
     @patch('feedparser.parse', return_value=PARSED_FEED_304)
     def test_parse_feed_has_etag_and_modified_expect_304(self, parse):
