@@ -145,6 +145,7 @@ NYT_PARSED_FEED_200['status'] = 200
 
 ITEM_TEST_KEYS = ['title', 'link', 'title']
 
+
 def get_expected_values(title, link, pub_date):
     return {'title': title, 'link': link, 'published': pub_date}
 

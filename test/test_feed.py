@@ -50,6 +50,19 @@ class FeedTest(BaseTest):
             for key in ITEM_TEST_KEYS:
                 self.assertEqual(unescape(expected_values[key]), item_dict[key])
 
+    @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
+    def test_nyt_valid_feed_unpublished_items_last_published_is_none(self, parse):
+        feed: Feed = Feed(self.url1, None, None, None)
+        feed.parse()
+
+        self.assertIsNotNone(feed.parsed_feed)
+        self.assertTrue(feed.parsed_feed.has_key('items'))
+
+        all_items = feed.parsed_feed['items']
+
+        unpublished_items = feed.get_unpublished_items()
+
+        self.assertEqual(all_items, unpublished_items)
 
     @patch('feedparser.parse', return_value=PARSED_FEED_304)
     def test_parse_feed_has_etag_and_modified_expect_304(self, parse):
