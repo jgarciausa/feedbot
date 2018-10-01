@@ -143,16 +143,17 @@ NYT_FEED_XML = """<?xml version="1.0"?>
 NYT_PARSED_FEED_200 = feedparser.parse(NYT_FEED_XML, response_headers=NYT_RESPONSE_HEADER)
 NYT_PARSED_FEED_200['status'] = 200
 
-ITEM_TEST_KEYS = ['title', 'link', 'title']
+KEY_TITLE = 'title'
+KEY_LINK = 'link'
+KEY_PUBLISHED = 'published'
 
-
-def get_expected_values(title, link, pub_date):
-    return {'title': title, 'link': link, 'published': pub_date}
-
+ITEM_TEST_KEYS = [KEY_TITLE, KEY_LINK, KEY_PUBLISHED]
 
 NYT_EXPECTED_VALUES = [
-    get_expected_values(NYT_TITLE_1, NYT_LINK_1, NYT_PUB_DATE_1),
-    get_expected_values(NYT_TITLE_2, NYT_LINK_2, NYT_PUB_DATE_2),
-    get_expected_values(NYT_TITLE_3, NYT_LINK_3, NYT_PUB_DATE_3),
-    get_expected_values(NYT_TITLE_4, NYT_LINK_4, NYT_PUB_DATE_4),
+    {KEY_TITLE: title, KEY_LINK: link, KEY_PUBLISHED: pub_date} for title, link, pub_date in [
+        (NYT_TITLE_1, NYT_LINK_1, NYT_PUB_DATE_1),
+        (NYT_TITLE_2, NYT_LINK_2, NYT_PUB_DATE_2),
+        (NYT_TITLE_3, NYT_LINK_3, NYT_PUB_DATE_3),
+        (NYT_TITLE_4, NYT_LINK_4, NYT_PUB_DATE_4)
+    ]
 ]
