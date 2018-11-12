@@ -47,7 +47,7 @@ class Feed:
                 #  Set it for this object.
                 self.__dict__[attr] = feed.__dict__[attr]
 
-    def _get_item_published(self, item):
+    def _get_item_published(self, item) -> datetime.datetime:
         return dateparser.parse(item['published'])
 
     def _get_parsed_feed(self):
