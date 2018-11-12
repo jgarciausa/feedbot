@@ -28,22 +28,28 @@ class BaseTest(unittest.TestCase):
         self.etag2 = '"66cf15724f5ff73cf2b3cafe70edd27d"'
 
         self.status_tree = ElementTree.fromstring("""<?xml version="1.0"?>
-        <status>
-            <feeds>
-                <feed>
-                    <url>{url1}</url>
-                    <last_request>{last_request_1}</last_request>
-                    <etag>{etag1}</etag>
-                    <last_published>{last_published_1}</last_published>
-                </feed>
-                <feed>
-                    <url>{url2}</url>
-                    <last_request>{last_request_2}</last_request>
-                    <etag>{etag2}</etag>
-                    <last_published>{last_published_2}</last_published>
-                </feed>
-            </feeds>
-        </status>
-        """.format(url1=self.url1, last_request_1=self.last_request_1, etag1=self.etag1,
+<status>
+    <feeds>
+        <feed>
+            <url>{url1}</url>
+            <last_request>{last_request_1}</last_request>
+            <etag>{etag1}</etag>
+            <last_published>{last_published_1}</last_published>
+        </feed>
+        <feed>
+            <url>{url2}</url>
+            <last_request>{last_request_2}</last_request>
+            <etag>{etag2}</etag>
+            <last_published>{last_published_2}</last_published>
+        </feed>
+    </feeds>
+</status>
+""".format(url1=self.url1, last_request_1=self.last_request_1, etag1=self.etag1,
                    last_published_1=self.last_published_1, url2=self.url2, last_request_2=self.last_request_2,
                    etag2=self.etag2, last_published_2=self.last_published_2))
+
+        self.status_xml_no_feeds = """<?xml version="1.0" ?>
+<status>
+    <feeds/>
+</status>
+"""
