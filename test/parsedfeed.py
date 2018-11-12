@@ -1,5 +1,6 @@
 import feedparser
 from feedparser import FeedParserDict
+from dateutil import parser as dateparser
 
 PARSED_FEED_304: FeedParserDict = FeedParserDict()
 PARSED_FEED_304['status'] = 304
@@ -46,6 +47,8 @@ NYT_LAST_PUBLISHED_BEFORE_ALL_ITEMS = 'Tue, 04 Sep 2018 01:00:00 GMT'
 NYT_LAST_PUBLISHED_MIDPOINT_OF_ITEMS = 'Tue, 04 Sep 2018 06:30:00 GMT'
 NYT_LAST_PUBLISHED_ONLY_ONE_ITEM_AFTER = 'Tue, 04 Sep 2018 11:00:00 GMT'
 NYT_LAST_PUBLISHED_AFTER_ALL_ITEMS = 'Tue, 04 Sep 2018 13:00:00 GMT'
+NYT_LATEST_PUB_DATE_STRING = NYT_PUB_DATE_2
+NYT_LATEST_PUB_DATE_DATETIME = dateparser.parse(NYT_LATEST_PUB_DATE_STRING)
 
 NYT_FEED_XML = """<?xml version="1.0"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"

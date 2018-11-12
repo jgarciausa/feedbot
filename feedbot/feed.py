@@ -13,8 +13,23 @@ class Feed:
         self.etag: str = etag
         self.parsed_feed: FeedParserDict = None
         self._unpublished_items: list = []
+        self._published_items: list = []
 
-    def get_unpublished_items(self):
+    def update_last_published(self):
+
+        if not self._published_items:
+            #  Do nothing.
+            return
+
+        for item in self._published_items:
+
+            item_published: datetime.datetime = self._get_item_published(item)
+
+            if not self.last_published or item_published > self.last_published:
+                self.last_published = item_published
+
+    @property
+    def unpublished_items(self):
 
         if not self._unpublished_items:
 
@@ -47,7 +62,7 @@ class Feed:
                 #  Set it for this object.
                 self.__dict__[attr] = feed.__dict__[attr]
 
-    def _get_item_published(self, item) -> datetime.datetime:
+    def _get_item_published(self, item: FeedParserDict) -> datetime.datetime:
         return dateparser.parse(item['published'])
 
     def _get_parsed_feed(self):
@@ -60,4 +75,12 @@ class Feed:
         if not self.etag and self.last_request:
             #  ... pass in the last_request as the modified
             return feedparser.parse(self.url, modified=self.last_request)
+
+    @property
+    def published_items(self):
+        return self._published_items
+
+    @published_items.setter
+    def published_items(self, published_items):
+        self._published_items = published_items
 
