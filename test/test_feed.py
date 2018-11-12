@@ -17,7 +17,7 @@ from feedbot.feed import Feed
 from unittest.mock import patch
 from xml.sax.saxutils import unescape
 from dateutil import parser as dateparser
-import datetime
+from datetime import datetime
 
 
 class FeedTest(BaseTest):
@@ -77,7 +77,7 @@ class FeedTest(BaseTest):
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_update_last_published_nyt_valid_feed_last_published_is_before_all_items(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_BEFORE_ALL_ITEMS)
+        last_published: datetime = dateparser.parse(NYT_LAST_PUBLISHED_BEFORE_ALL_ITEMS)
 
         #  Start with the last_published set to None.
         feed: Feed = Feed(self.url1, None, None, last_published)
@@ -95,7 +95,7 @@ class FeedTest(BaseTest):
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_update_last_published_nyt_valid_feed_last_published_is_midpoint_of_items(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_MIDPOINT_OF_ITEMS)
+        last_published: datetime = dateparser.parse(NYT_LAST_PUBLISHED_MIDPOINT_OF_ITEMS)
 
         #  Start with the last_published set to None.
         feed: Feed = Feed(self.url1, None, None, last_published)
@@ -113,7 +113,7 @@ class FeedTest(BaseTest):
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_update_last_published_nyt_valid_feed_last_published_is_only_one_item_after(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_ONLY_ONE_ITEM_AFTER)
+        last_published: datetime = dateparser.parse(NYT_LAST_PUBLISHED_ONLY_ONE_ITEM_AFTER)
 
         #  Start with the last_published set to None.
         feed: Feed = Feed(self.url1, None, None, last_published)
@@ -131,7 +131,7 @@ class FeedTest(BaseTest):
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_update_last_published_nyt_valid_feed_last_published_is_after_all_items(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_AFTER_ALL_ITEMS)
+        last_published: datetime = dateparser.parse(NYT_LAST_PUBLISHED_AFTER_ALL_ITEMS)
 
         #  Start with the last_published set to None.
         feed: Feed = Feed(self.url1, None, None, last_published)
@@ -161,7 +161,7 @@ class FeedTest(BaseTest):
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_unpublished_items_nyt_valid_feed_last_published_is_before_all_items(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_BEFORE_ALL_ITEMS)
+        last_published: datetime = dateparser.parse(NYT_LAST_PUBLISHED_BEFORE_ALL_ITEMS)
 
         feed: Feed = Feed(self.url1, None, None, last_published)
         feed.parse()
@@ -176,7 +176,7 @@ class FeedTest(BaseTest):
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_unpublished_items_nyt_valid_feed_last_published_is_midpoint_of_items(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_MIDPOINT_OF_ITEMS)
+        last_published: datetime = dateparser.parse(NYT_LAST_PUBLISHED_MIDPOINT_OF_ITEMS)
 
         feed: Feed = Feed(self.url1, None, None, last_published)
         feed.parse()
@@ -189,7 +189,7 @@ class FeedTest(BaseTest):
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_unpublished_items_nyt_valid_feed_last_published_is_only_one_item_after(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_ONLY_ONE_ITEM_AFTER)
+        last_published: datetime = dateparser.parse(NYT_LAST_PUBLISHED_ONLY_ONE_ITEM_AFTER)
 
         feed: Feed = Feed(self.url1, None, None, last_published)
         feed.parse()
@@ -202,7 +202,7 @@ class FeedTest(BaseTest):
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
     def test_unpublished_items_nyt_valid_feed_last_published_is_after_all_items(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_AFTER_ALL_ITEMS)
+        last_published: datetime = dateparser.parse(NYT_LAST_PUBLISHED_AFTER_ALL_ITEMS)
 
         feed: Feed = Feed(self.url1, None, None, last_published)
         feed.parse()

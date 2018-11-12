@@ -11,8 +11,8 @@ class FeedDataReaderTest(BaseTest):
         self.assertEqual(feed_config_reader.feeds[0].url, self.url1)
         self.assertEqual(feed_config_reader.feeds[1].url, self.url2)
 
-    def test_read_url_only(self):
-        feed_config_reader = FeedDataReader(self.two_feed_url_only_tree)
+    def test_read_config(self):
+        feed_config_reader = FeedDataReader(self.config_tree)
 
         self.validate_feed_config_reader(feed_config_reader)
 
@@ -21,16 +21,16 @@ class FeedDataReaderTest(BaseTest):
             self.assertFalse(feed.last_published)
             self.assertFalse(feed.etag)
 
-    def test_read_full(self):
-        feed_config_reader = FeedDataReader(self.two_feed_full_tree)
+    def test_read_status(self):
+        feed_config_reader = FeedDataReader(self.status_tree)
 
         self.validate_feed_config_reader(feed_config_reader)
 
         self.assertEqual(feed_config_reader.feeds[0].last_request, self.last_request_1)
-        self.assertEqual(feed_config_reader.feeds[0].last_published, self.last_published_1)
+        self.assertEqual(feed_config_reader.feeds[0].last_published.isoformat(), self.last_published_1)
         self.assertEqual(feed_config_reader.feeds[0].etag, self.etag1)
         self.assertEqual(feed_config_reader.feeds[1].last_request, self.last_request_2)
-        self.assertEqual(feed_config_reader.feeds[1].last_published, self.last_published_2)
+        self.assertEqual(feed_config_reader.feeds[1].last_published.isoformat(), self.last_published_2)
         self.assertEqual(feed_config_reader.feeds[1].etag, self.etag2)
 
 

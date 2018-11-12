@@ -1,15 +1,15 @@
 import feedparser
 from feedparser import FeedParserDict
 from dateutil import parser as dateparser
-import datetime
+from datetime import datetime
 
 
 class Feed:
 
     def __init__(self, url=None, last_request=None, etag=None, last_published=None):
         self.url = url
-        self.last_request: datetime.datetime = last_request
-        self.last_published = last_published
+        self.last_request: datetime = last_request
+        self.last_published: datetime = last_published
         self.etag: str = etag
         self.parsed_feed: FeedParserDict = None
         self._unpublished_items: list = []
@@ -23,7 +23,7 @@ class Feed:
 
         for item in self._published_items:
 
-            item_published: datetime.datetime = self._get_item_published(item)
+            item_published: datetime = self._get_item_published(item)
 
             if not self.last_published or item_published > self.last_published:
                 self.last_published = item_published
@@ -62,7 +62,7 @@ class Feed:
                 #  Set it for this object.
                 self.__dict__[attr] = feed.__dict__[attr]
 
-    def _get_item_published(self, item: FeedParserDict) -> datetime.datetime:
+    def _get_item_published(self, item: FeedParserDict) -> datetime:
         return dateparser.parse(item['published'])
 
     def _get_parsed_feed(self):
