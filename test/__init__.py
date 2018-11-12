@@ -1,6 +1,8 @@
 import unittest
 from xml.etree import ElementTree
 from xml.sax.saxutils import escape
+from feedbot.bot import STATUS_XML_EMPTY
+
 
 class BaseTest(unittest.TestCase):
 
@@ -50,7 +52,9 @@ class BaseTest(unittest.TestCase):
                    last_published_1=self.last_published_1, url2=self.url2, last_request_2=self.last_request_2,
                    etag2=escape(self.etag2, self.escape_dict), last_published_2=self.last_published_2)
 
-        self.status_tree = ElementTree.fromstring(self.status_tree_string)
+        self.status_tree_full = ElementTree.fromstring(self.status_tree_string)
+
+        self.status_tree_empty = ElementTree.fromstring(STATUS_XML_EMPTY)
 
         self.status_xml_no_feeds = """<?xml version="1.0" ?>
 <status>
