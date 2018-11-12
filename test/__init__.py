@@ -1,6 +1,6 @@
 import unittest
 from xml.etree import ElementTree
-
+from xml.sax.saxutils import escape
 
 class BaseTest(unittest.TestCase):
 
@@ -27,7 +27,9 @@ class BaseTest(unittest.TestCase):
         self.last_published_2 = '2018-09-03T19:46:12+00:00'
         self.etag2 = '"66cf15724f5ff73cf2b3cafe70edd27d"'
 
-        self.status_tree = ElementTree.fromstring("""<?xml version="1.0"?>
+        self.escape_dict = {'"': '&quot;'}
+
+        self.status_tree_string = """<?xml version="1.0" ?>
 <status>
     <feeds>
         <feed>
@@ -44,9 +46,11 @@ class BaseTest(unittest.TestCase):
         </feed>
     </feeds>
 </status>
-""".format(url1=self.url1, last_request_1=self.last_request_1, etag1=self.etag1,
+""".format(url1=self.url1, last_request_1=self.last_request_1, etag1=escape(self.etag1, self.escape_dict),
                    last_published_1=self.last_published_1, url2=self.url2, last_request_2=self.last_request_2,
-                   etag2=self.etag2, last_published_2=self.last_published_2))
+                   etag2=escape(self.etag2, self.escape_dict), last_published_2=self.last_published_2)
+
+        self.status_tree = ElementTree.fromstring(self.status_tree_string)
 
         self.status_xml_no_feeds = """<?xml version="1.0" ?>
 <status>
