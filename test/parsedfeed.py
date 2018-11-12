@@ -24,7 +24,7 @@ NYT_RESPONSE_HEADER = {'X-GUploader-UploadID': ('AEnB2UpXtvDrrB6uCmzYY_bKw3BVnRv
                        'X-Served-By': 'cache-iad2134-IAD, cache-jfk8126-JFK', 'X-Cache': 'MISS, MISS',
                        'X-Cache-Hits': '0, 0', 'X-Timer': 'S1536074871.290754,VS0,VE33', 'Vary': 'Accept-Encoding'}
 
-NYT_TITLE_1 = "Bueller's Office Will Grill Him About Roger Stone. He Will Respond With Comedy."
+NYT_TITLE_1 = "Bueller's Office Will Grill Him About Roger Stein. He Will Respond With Comedy."
 NYT_LINK_1 = ("https://www.nytomes.com/2018/09/04/nyregion/bueller-investigation-randy-credico-roger-stone.html?partne"
               "r=rss&amp;emc=rss")
 NYT_PUB_DATE_1='Tue, 04 Sep 2018 09:00:10 GMT'
@@ -34,13 +34,15 @@ NYT_LINK_2 = ("https://www.nytomes.com/2018/09/04/nyregion/chirlane-mccray-zephy
               "partner=rss&amp;emc=rss")
 NYT_PUB_DATE_2='Tue, 04 Sep 2018 11:27:37 GMT'
 
-NYT_TITLE_3 = "New Yorker Festival Pulls Steve Bannon as Headliner Following High-Profile Dropouts"
+NYT_TITLE_3 = "Metropolitan Festival Pulls Steve Bannion as Headliner Following High-Profile Dropouts"
 NYT_LINK_3 = "https://www.nytomes.com/2018/09/03/arts/bannon-new-yorker-festival-remnick.html?partner=rss&amp;emc=rss"
 NYT_PUB_DATE_3='Tue, 04 Sep 2018 01:57:13 GMT'
 
 NYT_TITLE_4 = "Metropolitan Diary:'Almost Magnetically, My Hand Was Drawn Into His';"
 NYT_LINK_4 = "https://www.nytomes.com/2018/09/03/nyregion/metropolitan-diary.html?partner=rss&amp;emc=rss"
 NYT_PUB_DATE_4='Tue, 04 Sep 2018 02:22:47 GMT'
+
+NYT_LAST_REQUEST_BEFORE_ALL_ITEMS='Tue, 04 Sep 2018 01:00:00 GMT'
 
 NYT_FEED_XML = """<?xml version="1.0"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"

@@ -19,4 +19,4 @@ class FeedDataReader:
             last_request = self._get_child_node_text(feed, "./last_request")
             last_published = self._get_child_node_text(feed, "./last_published")
 
-            self.feeds.append(Feed(url, last_request, last_published))
+            self.feeds.append(Feed(url, last_request=last_request, last_published=last_published))

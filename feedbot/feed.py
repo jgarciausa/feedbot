@@ -1,12 +1,14 @@
 import feedparser
 from feedparser import FeedParserDict
+from dateutil import parser as dateparser
+import datetime
 
 
 class Feed:
 
-    def __init__(self, url=None, last_request=None, last_published=None, etag=None):
+    def __init__(self, url=None, last_request=None, etag=None, last_published=None):
         self.url = url
-        self.last_request = last_request
+        self.last_request: datetime.datetime = last_request
         self.last_published = last_published
         self.etag: str = etag
         self.parsed_feed: FeedParserDict = None
@@ -17,8 +19,16 @@ class Feed:
         if not self.last_published:
             return self.parsed_feed['items']
 
-        raise RuntimeError("We haven't coded what to do if there's a last published date!")
+        #  We have a last_published
+        unpublished_items = []
 
+        for item in self.parsed_feed['items']:
+            published: datetime.datetime = dateparser.parse(item['published'])
+
+            if published > self.last_published:
+                unpublished_items.append(item)
+
+        return unpublished_items
 
     def parse(self):
 
