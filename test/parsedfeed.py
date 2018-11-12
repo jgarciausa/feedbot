@@ -42,7 +42,10 @@ NYT_TITLE_4 = "Metropolitan Diary:'Almost Magnetically, My Hand Was Drawn Into H
 NYT_LINK_4 = "https://www.nytomes.com/2018/09/03/nyregion/metropolitan-diary.html?partner=rss&amp;emc=rss"
 NYT_PUB_DATE_4='Tue, 04 Sep 2018 02:22:47 GMT'
 
-NYT_LAST_REQUEST_BEFORE_ALL_ITEMS='Tue, 04 Sep 2018 01:00:00 GMT'
+NYT_LAST_PUBLISHED_BEFORE_ALL_ITEMS = 'Tue, 04 Sep 2018 01:00:00 GMT'
+NYT_LAST_PUBLISHED_MIDPOINT_OF_ITEMS = 'Tue, 04 Sep 2018 06:30:00 GMT'
+NYT_LAST_PUBLISHED_ONLY_ONE_ITEM_AFTER = 'Tue, 04 Sep 2018 11:00:00 GMT'
+NYT_LAST_PUBLISHED_AFTER_ALL_ITEMS = 'Tue, 04 Sep 2018 13:00:00 GMT'
 
 NYT_FEED_XML = """<?xml version="1.0"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"

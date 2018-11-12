@@ -7,7 +7,10 @@ from test.parsedfeed import NYT_VALID_RESPONSE_LAST_MODIFIED
 from test.parsedfeed import NYT_VALID_RESPONSE_ETAG
 from test.parsedfeed import NYT_EXPECTED_VALUES
 from test.parsedfeed import ITEM_TEST_KEYS
-from test.parsedfeed import NYT_LAST_REQUEST_BEFORE_ALL_ITEMS
+from test.parsedfeed import NYT_LAST_PUBLISHED_BEFORE_ALL_ITEMS
+from test.parsedfeed import NYT_LAST_PUBLISHED_MIDPOINT_OF_ITEMS
+from test.parsedfeed import NYT_LAST_PUBLISHED_ONLY_ONE_ITEM_AFTER
+from test.parsedfeed import NYT_LAST_PUBLISHED_AFTER_ALL_ITEMS
 from feedbot.feed import Feed
 from unittest.mock import patch
 from xml.sax.saxutils import unescape
@@ -54,7 +57,7 @@ class FeedTest(BaseTest):
                 self.assertEqual(unescape(expected_values[key]), item_dict[key])
 
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
-    def test_get_unpublished_items_nyt_valid_feed_last_request_is_none(self, parse):
+    def test_get_unpublished_items_nyt_valid_feed_last_published_is_none(self, parse):
         feed: Feed = Feed(self.url1, None, None, None)
         feed.parse()
 
@@ -68,9 +71,9 @@ class FeedTest(BaseTest):
         self.assertEqual(all_items, unpublished_items)
 
     @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
-    def test_get_unpublished_items_nyt_valid_feed_last_request_is_before_all_items(self, parse):
+    def test_get_unpublished_items_nyt_valid_feed_last_published_is_before_all_items(self, parse):
 
-        last_published: datetime.datetime = dateparser.parse(NYT_LAST_REQUEST_BEFORE_ALL_ITEMS)
+        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_BEFORE_ALL_ITEMS)
 
         feed: Feed = Feed(self.url1, None, None, last_published)
         feed.parse()
@@ -83,6 +86,51 @@ class FeedTest(BaseTest):
         unpublished_items = feed.get_unpublished_items()
 
         self.assertEqual(all_items, unpublished_items)
+
+    @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
+    def test_get_unpublished_items_nyt_valid_feed_last_published_is_midpoint_of_items(self, parse):
+
+        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_MIDPOINT_OF_ITEMS)
+
+        feed: Feed = Feed(self.url1, None, None, last_published)
+        feed.parse()
+
+        self.assertIsNotNone(feed.parsed_feed)
+        self.assertTrue(feed.parsed_feed.has_key('items'))
+
+        unpublished_items = feed.get_unpublished_items()
+
+        self.assertEqual(2, len(unpublished_items))
+
+    @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
+    def test_get_unpublished_items_nyt_valid_feed_last_published_is_only_one_item_after(self, parse):
+
+        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_ONLY_ONE_ITEM_AFTER)
+
+        feed: Feed = Feed(self.url1, None, None, last_published)
+        feed.parse()
+
+        self.assertIsNotNone(feed.parsed_feed)
+        self.assertTrue(feed.parsed_feed.has_key('items'))
+
+        unpublished_items = feed.get_unpublished_items()
+
+        self.assertEqual(1, len(unpublished_items))
+
+    @patch('feedparser.parse', return_value=NYT_PARSED_FEED_200)
+    def test_get_unpublished_items_nyt_valid_feed_last_published_after_all_items(self, parse):
+
+        last_published: datetime.datetime = dateparser.parse(NYT_LAST_PUBLISHED_AFTER_ALL_ITEMS)
+
+        feed: Feed = Feed(self.url1, None, None, last_published)
+        feed.parse()
+
+        self.assertIsNotNone(feed.parsed_feed)
+        self.assertTrue(feed.parsed_feed.has_key('items'))
+
+        unpublished_items = feed.get_unpublished_items()
+
+        self.assertFalse(unpublished_items)
 
     @patch('feedparser.parse', return_value=PARSED_FEED_304)
     def test_parse_feed_has_etag_and_modified_expect_304(self, parse):
