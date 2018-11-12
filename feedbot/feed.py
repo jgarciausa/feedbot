@@ -22,9 +22,8 @@ class Feed:
                 self._unpublished_items = self.parsed_feed['items']
             else:
                 for item in self.parsed_feed['items']:
-                    published: datetime.datetime = dateparser.parse(item['published'])
 
-                    if published > self.last_published:
+                    if self._get_item_published(item) > self.last_published:
                         self._unpublished_items.append(item)
 
         return self._unpublished_items
@@ -47,6 +46,9 @@ class Feed:
             if not self.__dict__[attr] and feed.__dict__[attr]:
                 #  Set it for this object.
                 self.__dict__[attr] = feed.__dict__[attr]
+
+    def _get_item_published(self, item):
+        return dateparser.parse(item['published'])
 
     def _get_parsed_feed(self):
         if not self.etag and not self.last_request:
