@@ -16,19 +16,18 @@ class Feed:
 
     def get_unpublished_items(self):
 
-        if not self.last_published:
-            return self.parsed_feed['items']
+        if not self._unpublished_items:
 
-        #  We have a last_published
-        unpublished_items = []
+            if not self.last_published:
+                self._unpublished_items = self.parsed_feed['items']
+            else:
+                for item in self.parsed_feed['items']:
+                    published: datetime.datetime = dateparser.parse(item['published'])
 
-        for item in self.parsed_feed['items']:
-            published: datetime.datetime = dateparser.parse(item['published'])
+                    if published > self.last_published:
+                        self._unpublished_items.append(item)
 
-            if published > self.last_published:
-                unpublished_items.append(item)
-
-        return unpublished_items
+        return self._unpublished_items
 
     def parse(self):
 

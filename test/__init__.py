@@ -33,14 +33,16 @@ class BaseTest(unittest.TestCase):
                     <url>{url1}</url>
                     <last_request>{last_request_1}</last_request>
                     <last_published>{last_published_1}</last_published>
+                    <etag>{etag1}</etag>
                 </feed>
                 <feed>
                     <url>{url2}</url>
                     <last_request>{last_request_2}</last_request>
                     <last_published>{last_published_2}</last_published>
+                    <etag>{etag2}</etag>
                 </feed>
             </feeds>
         </status>
         """.format(url1=self.url1, url2=self.url2, last_request_1=self.last_request_1,
                    last_request_2=self.last_request_2, last_published_1=self.last_published_1,
-                   last_published_2=self.last_published_2))
+                   etag1=self.etag1, last_published_2=self.last_published_2, etag2=self.etag2))
