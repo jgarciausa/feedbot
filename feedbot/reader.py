@@ -7,6 +7,15 @@ class FeedDataReader:
     def __init__(self, tree):
         self.feeds = []
         self._get_feed_data(tree)
+        self._indexed_feeds = {}
+
+    @property
+    def indexed_feeds(self) -> dict:
+        if not self._indexed_feeds:
+            for feed in self.feeds:
+                self._indexed_feeds[feed.url] = feed
+
+        return self._indexed_feeds
 
     def _get_child_node_text(self, node, xpath):
         child_node = node.find(xpath)

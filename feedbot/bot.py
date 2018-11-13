@@ -14,8 +14,16 @@ def main(config_tree, status_file, status_tree):
     status_data_reader = FeedDataReader(status_tree)
 
     for feed in config_data_reader.feeds:
-        print(feed.url)
 
+        if feed.url in status_data_reader.indexed_feeds:
+            feed.merge(status_data_reader.indexed_feeds.get(feed.url))
+
+        feed.parse()
+
+        for item in feed.unpublished_items:
+            print("---------------------")
+            print("Title: {title}".format(title=item['title']))
+            print("Link: {link}".format(link=item['link']))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
